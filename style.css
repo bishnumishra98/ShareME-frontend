@@ -1,6 +1,6 @@
 :root {
-    --main-bg-color: #eff5fe;
-    --border-color: #0288d147;
+    --main-bg-color: #133b69;
+    --border-color: #02101847;
 }
 
 body, html {
@@ -9,6 +9,13 @@ body, html {
     height: 100%;
     padding: 0;
     margin: 0;
+}
+
+.logo {
+    position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 300px;
 }
 
 body, .drop-zone {
@@ -20,9 +27,9 @@ body, .drop-zone {
 
 .upload-container {
     margin: 60px;
-    background: #ffffff;
+    background: rgb(221, 228, 221);
     border-radius: 25px;
-    box-shadow: 0px 20px 20px #0000002e;
+    box-shadow: 30px 30px 30px rgb(40, 39, 39);
 }
 
 .drop-zone {
@@ -36,7 +43,8 @@ body, .drop-zone {
 
 .dragged.drop-zone {
     background-color: var(--main-bg-color);
-    border-color: darkblue;
+    border: none;
+    box-shadow: 15px 15px 15px rgb(87, 81, 81);
 }
 
 .icon-container {
@@ -74,13 +82,14 @@ body, .drop-zone {
 }
 
 .drop-zone .title {
-    transition: font-weight 0.1s ease;
+    transition: font-weight color 0.1s ease;
 }
 
 /* '.drop-zone.dragged' is a compound or combination selector. It selects elements
    that have both the classes 'drop-zone' and 'dragged' simultaneously. */
 .dragged.drop-zone .title {
     font-weight: bold;
+    color: white;
 }
 
 #fileInput {
