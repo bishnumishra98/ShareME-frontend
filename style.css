@@ -1,0 +1,88 @@
+:root {
+    --main-bg-color: #eff5fe;
+    --border-color: #0288d147;
+}
+
+body, html {
+    font-family: system-ui;
+    background: var(--main-bg-color);
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body, .drop-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.upload-container {
+    margin: 60px;
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0px 20px 20px #0000002e;
+}
+
+.drop-zone {
+    width: 500px;
+    min-height: 200px;
+    border: 2px dashed var(--border-color);
+    margin: 30px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.dragged.drop-zone {
+    background-color: var(--main-bg-color);
+    border-color: darkblue;
+}
+
+.icon-container {
+    width: 75px;
+    height: 100px;
+    position: relative;
+    cursor: pointer;
+}
+
+.icon-container img {
+    position: absolute;
+    transform-origin: bottom;
+    transition: transform 150ms ease-in-out;   /* for smooth transition */
+}
+
+.icon-container .center {
+    width: 100px;
+    z-index: 2;
+}
+
+.icon-container .left, .icon-container .right {
+    width: 70px;
+}
+
+.dragged .icon-container .left {
+    transform: rotate(-30deg) translateX(-30px) scale(1.1);
+}
+
+.dragged .icon-container .right {
+    transform: rotate(30deg) translateX(30px) scale(1.1);
+}
+
+.dragged .icon-container .center {
+    transform: translateY(-5px);
+}
+
+.drop-zone .title {
+    transition: font-weight 0.1s ease;
+}
+
+/* '.drop-zone.dragged' is a compound or combination selector. It selects elements
+   that have both the classes 'drop-zone' and 'dragged' simultaneously. */
+.dragged.drop-zone .title {
+    font-weight: bold;
+}
+
+#fileInput {
+    display: none;
+}
