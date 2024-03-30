@@ -40,7 +40,6 @@ dropZone.addEventListener("drop", (e) => {
         fileInput.files = files;
         uploadFile();
     }
-    
 });
 
 // Add event listener for mouseenter to keep the animation when hovering
