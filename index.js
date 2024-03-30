@@ -2,7 +2,7 @@ const dropZone = document.querySelector(".drop-zone");
 const browseBtn = document.querySelector(".browseBtn");
 const fileInput = document.querySelector("#fileInput");
 
-const host = "https://inshare.herokuapp.com/";
+const host = "https://shareme.herokuapp.com/";
 const uploadURL = `${host}api/files`;
 // const uploadURL = `${host}api/files`;
 
@@ -42,6 +42,11 @@ dropZone.addEventListener("drop", (e) => {
     }
 });
 
+// Add event listener for triggering the uploadFile() function whenever the user chooses a file using the file input
+fileInput.addEventListener("change", () => {
+    uploadFile();
+});
+
 // Add event listener for mouseenter to keep the animation when hovering
 dropZone.addEventListener("mouseenter", () => {
     addDraggedClass();
@@ -57,18 +62,20 @@ browseBtn.addEventListener("click", () => {
     fileInput.click();
 });
 
+
+// uploadFile function prepares a file for upload, creates an XHR object, configures it for a POST request to the specified URL (uploadURL), and sends the file data
 const uploadFile = () => {
     const file = fileInput.files[0];
-    const formData = new FormData();
+    const formData = new FormData();   // A FormData object is created to prepare the data for sending via an HTTP request. It allows you to construct a set of key-value pairs representing form fields and their values.
     formData.append("myfile", file);
 
-    const xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();   // An instance of XMLHttpRequest is created. XHR is a browser API that allows you to make HTTP requests from JavaScript.
     xhr.onreadystatechange = () => {
         if(xhr.readyState === XMLHttpRequest.DONE) {
             console.log(xhr.response);
         }
     };
 
-    xhr.open("POST", uploadURL);
-    xhr.send(formData);
+    xhr.open("POST", uploadURL);   // The open method initializes the request. It specifies the HTTP method (in this case, “POST”) and the URL (uploadURL) to which the request will be sent.
+    xhr.send(formData);   // The send method sends the prepared formData (which includes the selected file) to the specified URL via an HTTP POST request.
 }
