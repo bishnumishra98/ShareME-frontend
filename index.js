@@ -2,7 +2,7 @@ const dropZone = document.querySelector(".drop-zone");
 const browseBtn = document.querySelector(".browseBtn");
 const fileInput = document.querySelector("#fileInput");
 
-const host = "https://shareme.herokuapp.com/";
+const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
 // const uploadURL = `${host}api/files`;
 
