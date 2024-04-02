@@ -1,6 +1,8 @@
 const dropZone = document.querySelector(".drop-zone");
 const browseBtn = document.querySelector(".browseBtn");
 const fileInput = document.querySelector("#fileInput");
+const bgProgress = document.querySelector(".bg-progress");
+const percentDiv = document.querySelector("#percent");
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
@@ -80,11 +82,13 @@ const uploadFile = () => {
 
     xhr.open("POST", uploadURL);   // The open method initializes the request. It specifies the HTTP method (in this case, “POST”) and the URL (uploadURL) to which the request will be sent.
     xhr.send(formData);   // The send method sends the prepared formData (which includes the selected file) to the specified URL via an HTTP POST request.
-    
+
 }
 
 // Functionality to calculate upload percentage of file at every some fraction of seconds
 const updateProgress = (e) => {
     const percent = Math.round((e.loaded / e.total) * 100);
     console.log(percent);
+    bgProgress.style.width = `${percent}%`;
+    percentDiv.innerText = percent;
 }

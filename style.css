@@ -1,6 +1,7 @@
 :root {
     --main-bg-color: #133b69;
     --border-color: #02101847;
+    --container-width: 500px;
 }
 
 body, html {
@@ -37,7 +38,7 @@ body, html {
     line-height: 1.5;
 }
 
-body, .drop-zone {
+body, .drop-zone, .upload-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +53,7 @@ body, .drop-zone {
 }
 
 .drop-zone {
-    width: 500px;
+    width: var(--container-width);
     min-height: 200px;
     border: 2px dashed var(--border-color);
     margin: 30px;
@@ -113,4 +114,35 @@ body, .drop-zone {
 
 #fileInput {
     display: none;
+}
+
+.progress-container {
+    width: var(--container-width);
+    height: 70px;
+    border: 2px solid var(--main-bg-color);
+    margin-bottom: 25px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.progress-container .bg-progress {
+    background-color: skyblue;
+    width: 0%;
+    height: 100%;
+    border-radius: 2%;
+    transform-origin: left;
+    transition: width .25s linear;
+    position: absolute;
+}
+
+.progress-container .inner-container {
+    font-weight: bolder;
+    margin: 10px 15px;
+    position: absolute;
+    z-index: 1;
+}
+
+.percent-container {
+    margin: 5px;
+    opacity: .5;
 }
