@@ -8,10 +8,11 @@ const percentDiv = document.querySelector("#percent");
 const fileURLInput = document.querySelector("#fileURL");
 const sharingContainer = document.querySelector(".sharing-container");
 const copyBtn = document.querySelector("#copyBtn");
+const emailForm = document.querySelector("#emailForm");
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
-// const uploadURL = `${host}api/files`;
+const emailURL = `${host}api/files/send`;
 
 // Function to add the "dragged" class
 function addDraggedClass() {
@@ -81,7 +82,7 @@ const uploadFile = () => {
     xhr.onreadystatechange = () => {
         if(xhr.readyState === XMLHttpRequest.DONE) {
             console.log(xhr.response);
-            showLink(JSON.parse(xhr.response));
+            onUploadSuccess(JSON.parse(xhr.response));
         }
     };
 
@@ -101,9 +102,11 @@ const updateProgress = (e) => {
     progressBar.style.transform = `scaleX(${percent/100})`;
 }
 
-// Download page link
-const showLink = ({ file: url }) => {
+// When file upload is successful
+const onUploadSuccess = ({ file: url }) => {
     console.log(url);
+    fileInput.value = "";   // After successful upload, make the value of fileInput blank, so that we can upload new file later.
+    emailForm[2].removeAttribute("disabled");   // remove the disabled attribute so that 'Send' button works
     progressContainer.style.display = "none";   // hide back progress-bar once download page link is generated
     sharingContainer.style.display = "block";
     fileURLInput.value = url;
@@ -112,4 +115,30 @@ const showLink = ({ file: url }) => {
 copyBtn.addEventListener("click", () => {
     fileURLInput.select();
     document.execCommand("copy");
+});
+
+emailForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // disable the 'Send' button after mail sent
+    emailForm[2].setAttribute("disabled", "true");
+
+    const url = fileURL.value;
+
+    const formData = {
+        uuid: url.split("/").splice(-1, 1)[0],
+        emailTo: emailForm.elements["to-email"].value,
+        emailFrom: emailForm.elements["from-email"].value
+    }
+    console.log(formData);
+    fetch(emailURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+    }).then((res) => res.json())
+      .then((data) => {
+            if(data.success) {
+                sharingContainer.style.display = "none";   // hide the box once email sent
+            }
+    });
 });

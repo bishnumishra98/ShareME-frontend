@@ -12,12 +12,6 @@
         <img src="images/logo.png" alt="AppLogo" class="logo" draggable="false">
     </header>
 
-    <!-- How to use ShareMe -->
-    <section class="instructions">
-        <h2>How to use ShareME ?</h2>
-        <p>Just upload your file here and get a clickable link which you can share with anybody to get the file downloaded.</p>
-    </section>
-    
 
     <section class="upload-container">
         <div class="drop-zone">
@@ -29,6 +23,8 @@
             <input type="file" id="fileInput">
             <div class="title">Click icon to browse or drag your file here.</div>
         </div>
+
+
         <div class="progress-container">
             <div class="bg-progress"></div>
             <div class="inner-container">
@@ -37,31 +33,35 @@
                 <div class="progress-bar"></div>
             </div>
         </div>
+
+
         <div class="sharing-container">
             <p class="expire">Link expires in 24 hrs</p>
             <div class="input-container">
                 <input type="text" id="fileURL" readonly>
                 <img src="./copy-icon.svg" alt="copy icon" id="copyBtn">
             </div>
-        </div>
-        
-        <p class="email-info">Or Send via Email</p>
-        <div class="email-container">
-            <form id="emailForm">
-                <div class="field">
-                    <label for="fromEmail">Your email</label>
-                    <input type="email" autocomplete="email" required name="from-email" id="fromEmail">
-                </div>
 
-                <div class="field">
-                    <label for="toEmail">Receiver's email</label>
-                    <input type="email" required autocomplete="receiver" name="to-email" id="toEmail">
-                </div>
-                <div class="send-btn-container">
-                    <button type="submit">Send</button>
-                </div>
-            </form>
+            <p class="email-info">Copy and paste the above link to download the file,</p>
+            <p class="email-info">or directly send via Email.</p>
+            <div class="email-container">
+                <form id="emailForm">
+                    <div class="field">
+                        <label for="fromEmail">Your email</label>
+                        <input type="email" autocomplete="email" required name="from-email" id="fromEmail">
+                    </div>
+
+                    <div class="field">
+                        <label for="toEmail">Receiver's email</label>
+                        <input type="email" required autocomplete="receiver" name="to-email" id="toEmail">
+                    </div>
+                    <div class="send-btn-container">
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
         </div>
+
     </section>
 
 
