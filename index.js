@@ -5,6 +5,9 @@ const progressContainer = document.querySelector(".progress-container");
 const bgProgress = document.querySelector(".bg-progress");
 const progressBar = document.querySelector(".progress-bar");
 const percentDiv = document.querySelector("#percent");
+const fileURLInput = document.querySelector("#fileURL");
+const sharingContainer = document.querySelector(".sharing-container");
+const copyBtn = document.querySelector("#copyBtn");
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
@@ -78,7 +81,7 @@ const uploadFile = () => {
     xhr.onreadystatechange = () => {
         if(xhr.readyState === XMLHttpRequest.DONE) {
             console.log(xhr.response);
-            showLink(xhr.response);
+            showLink(JSON.parse(xhr.response));
         }
     };
 
@@ -98,6 +101,15 @@ const updateProgress = (e) => {
     progressBar.style.transform = `scaleX(${percent/100})`;
 }
 
-const showLink = (link) => {
-    
+// Download page link
+const showLink = ({ file: url }) => {
+    console.log(url);
+    progressContainer.style.display = "none";   // hide back progress-bar once download page link is generated
+    sharingContainer.style.display = "block";
+    fileURLInput.value = url;
 }
+
+copyBtn.addEventListener("click", () => {
+    fileURLInput.select();
+    document.execCommand("copy");
+});
