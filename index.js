@@ -1,7 +1,9 @@
 const dropZone = document.querySelector(".drop-zone");
 const browseBtn = document.querySelector(".browseBtn");
 const fileInput = document.querySelector("#fileInput");
+const progressContainer = document.querySelector(".progress-container");
 const bgProgress = document.querySelector(".bg-progress");
+const progressBar = document.querySelector(".progress-bar");
 const percentDiv = document.querySelector("#percent");
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
@@ -67,6 +69,7 @@ browseBtn.addEventListener("click", () => {
 
 // uploadFile function prepares a file for upload, creates an XHR object, configures it for a POST request to the specified URL (uploadURL), and sends the file data
 const uploadFile = () => {
+    progressContainer.style.display = "block";
     const file = fileInput.files[0];
     const formData = new FormData();   // A FormData object is created to prepare the data for sending via an HTTP request. It allows you to construct a set of key-value pairs representing form fields and their values.
     formData.append("myfile", file);
@@ -75,6 +78,7 @@ const uploadFile = () => {
     xhr.onreadystatechange = () => {
         if(xhr.readyState === XMLHttpRequest.DONE) {
             console.log(xhr.response);
+            showLink(xhr.response);
         }
     };
 
@@ -91,4 +95,9 @@ const updateProgress = (e) => {
     console.log(percent);
     bgProgress.style.width = `${percent}%`;
     percentDiv.innerText = percent;
+    progressBar.style.transform = `scaleX(${percent/100})`;
+}
+
+const showLink = (link) => {
+    
 }
