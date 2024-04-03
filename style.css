@@ -281,6 +281,10 @@ p {
     width: 50vw;
 }
 
+.expire, .input-container {
+    margin: 10px;
+}
+
 
 @media screen and (max-width: 600px) {
     :root {
@@ -289,5 +293,8 @@ p {
     .email-container .field {
         flex-direction: column;
         width: 100%;
+    }
+    .drop-zone {
+        margin: 20px;
     }
 }
