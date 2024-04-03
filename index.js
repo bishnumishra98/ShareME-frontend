@@ -17,6 +17,8 @@ const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
 const emailURL = `${host}api/files/send`;
 
+const maxAllowedFileSize = 500 * 1024 * 1024;   // 500MB
+
 // Function to add the "dragged" class
 function addDraggedClass() {
     if (!dropZone.classList.contains("dragged")) {
@@ -77,8 +79,19 @@ browseBtn.addEventListener("click", () => {
 // uploadFile function prepares a file for upload, creates an XHR object, configures it for a POST request to the specified URL (uploadURL), and sends the file data
 const uploadFile = () => {
     pageIcon.style.display = "none";
-    progressContainer.style.display = "block";
+    if(fileInput.files.length > 1) {
+        fileInput.value = "";
+        showToast("Please upload only 1 file");
+        return;
+    }
     const file = fileInput.files[0];
+    if(file.size > maxAllowedFileSize) {
+        fileInput.value = "";
+        showToast("Cannot upload file larger than 500MB");
+        return;
+    }
+    progressContainer.style.display = "block";
+    
     const formData = new FormData();   // A FormData object is created to prepare the data for sending via an HTTP request. It allows you to construct a set of key-value pairs representing form fields and their values.
     formData.append("myfile", file);
 
