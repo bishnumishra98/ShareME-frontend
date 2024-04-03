@@ -11,7 +11,7 @@ const copyBtn = document.querySelector("#copyBtn");
 const emailForm = document.querySelector("#emailForm");
 const toast = document.querySelector(".toast");
 const pageIcon = document.querySelector(".page-icon");
-const AppLogo = document.querySelector(".logo"); 
+const appLogo = document.querySelector(".logo"); 
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
@@ -125,7 +125,7 @@ const updateProgress = (e) => {
 
 // When file upload is successful
 const onUploadSuccess = ({ file: url }) => {
-    AppLogo.style.display = "none";
+    appLogo.style.display = "none";
     console.log(url);
     fileInput.value = "";   // After successful upload, make the value of fileInput blank, so that we can upload new file later.
     emailForm[2].removeAttribute("disabled");   // remove the disabled attribute so that 'Send' button works
@@ -176,3 +176,7 @@ const showToast = (msg) => {
         toast.classList.remove("show");
     }, 2000);
 }
+
+appLogo.addEventListener("click", () => {
+    window.location.href = "https://bishnumishra98.github.io/ShareME-frontend/";
+});

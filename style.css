@@ -18,6 +18,7 @@ body, html {
 	top: 10px;
 	left: 10px;
 	width: 300px;
+    cursor: pointer;
 }
 
 .instructions {
@@ -291,4 +292,3 @@ p {
         width: calc(100% - 40px);
     }
 }
-
