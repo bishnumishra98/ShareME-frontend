@@ -265,3 +265,10 @@ p {
 .show.toast {
     transform: translate(-50%, 0);
 }
+
+.page-icon {
+    background: url(./page-icon.svg) no-repeat center;
+    background-size: contain;
+    height: 50vh;
+    width: 50vw;
+}
