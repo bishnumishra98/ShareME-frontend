@@ -9,6 +9,7 @@ const fileURLInput = document.querySelector("#fileURL");
 const sharingContainer = document.querySelector(".sharing-container");
 const copyBtn = document.querySelector("#copyBtn");
 const emailForm = document.querySelector("#emailForm");
+const toast = document.querySelector(".toast");
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
@@ -87,6 +88,10 @@ const uploadFile = () => {
     };
 
     xhr.upload.onprogress = updateProgress;
+    xhr.upload.onerror = () => {
+        fileInput.value = "";
+        showToast(`Error in upload: ${xhr.statusText}`);
+    }
 
     xhr.open("POST", uploadURL);   // The open method initializes the request. It specifies the HTTP method (in this case, “POST”) and the URL (uploadURL) to which the request will be sent.
     xhr.send(formData);   // The send method sends the prepared formData (which includes the selected file) to the specified URL via an HTTP POST request.
@@ -115,6 +120,7 @@ const onUploadSuccess = ({ file: url }) => {
 copyBtn.addEventListener("click", () => {
     fileURLInput.select();
     document.execCommand("copy");
+    showToast("Link copied");
 });
 
 emailForm.addEventListener("submit", (e) => {
@@ -139,6 +145,17 @@ emailForm.addEventListener("submit", (e) => {
       .then((data) => {
             if(data.success) {
                 sharingContainer.style.display = "none";   // hide the box once email sent
+                showToast("Email sent");
             }
     });
 });
+
+let toastTimer;
+const showToast = (msg) => {
+    clearTimeout(toastTimer);
+    toast.innerText = msg;
+    toast.classList.add("show");
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
