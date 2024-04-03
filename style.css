@@ -276,7 +276,7 @@ p {
 
 @media screen and (max-width: 600px) {
     :root {
-        --container-width: 270px;
+        --container-width: 240px;
     }
     .email-container .field {
         flex-direction: column;
