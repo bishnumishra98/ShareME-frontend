@@ -11,7 +11,8 @@ const copyBtn = document.querySelector("#copyBtn");
 const emailForm = document.querySelector("#emailForm");
 const toast = document.querySelector(".toast");
 const pageIcon = document.querySelector(".page-icon");
-const appLogo = document.querySelector(".logo"); 
+const appLogo = document.querySelector(".logo");
+const homePageURL = "http://127.0.0.1:5500";
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
@@ -78,7 +79,6 @@ browseBtn.addEventListener("click", () => {
 
 // uploadFile function prepares a file for upload, creates an XHR object, configures it for a POST request to the specified URL (uploadURL), and sends the file data
 const uploadFile = () => {
-    pageIcon.style.display = "none";
     if(fileInput.files.length > 1) {
         fileInput.value = "";
         showToast("Please upload only 1 file");
@@ -125,6 +125,7 @@ const updateProgress = (e) => {
 
 // When file upload is successful
 const onUploadSuccess = ({ file: url }) => {
+    pageIcon.style.display = "none";
     appLogo.style.display = "none";
     console.log(url);
     fileInput.value = "";   // After successful upload, make the value of fileInput blank, so that we can upload new file later.
@@ -163,6 +164,8 @@ emailForm.addEventListener("submit", (e) => {
             if(data.success) {
                 sharingContainer.style.display = "none";   // hide the box once email sent
                 showToast("Email sent");
+                pageIcon.style.display = "block";
+                appLogo.style.display = "block";
             }
     });
 });
@@ -178,5 +181,5 @@ const showToast = (msg) => {
 }
 
 appLogo.addEventListener("click", () => {
-    window.location.href = "https://bishnumishra98.github.io/ShareME-frontend/";
+    window.location.href = homePageURL;
 });
