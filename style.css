@@ -161,7 +161,7 @@ body, .drop-zone, .upload-container {
 
 .sharing-container {
     width: var(--container-width);
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
     display: none;
 }
 
@@ -273,22 +273,13 @@ p {
     width: 50vw;
 }
 
-/* @media screen and (max-width: 900px) {
-    :root{
-        --container-width: 320px;
-    }
-    .email-container .field {
-        flex-direction: column;
-        width: 300px;
-    }
-} */
 
 @media screen and (max-width: 600px) {
     :root {
-        --container-width: calc(100% - 40px);
+        --container-width: 270px;
     }
     .email-container .field {
         flex-direction: column;
-        width: calc(100% - 40px);
+        width: 100%;
     }
 }
