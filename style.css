@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --main-bg-color: #133b69;
     --border-color: #02101847;
@@ -19,6 +25,7 @@ body, html {
 	left: 10px;
 	width: 300px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .instructions {
@@ -48,7 +55,8 @@ body, .drop-zone, .upload-container {
 }
 
 .upload-container {
-    margin: 60px;
+    margin-bottom: 30px;
+    margin-top: 75px;
     background: rgb(221, 228, 221);
     border-radius: 25px;
     box-shadow: 30px 30px 30px rgb(40, 39, 39);
