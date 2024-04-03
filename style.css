@@ -109,7 +109,6 @@ body, .drop-zone, .upload-container {
 /* '.drop-zone.dragged' is a compound or combination selector. It selects elements
    that have both the classes 'drop-zone' and 'dragged' simultaneously. */
 .dragged.drop-zone .title {
-    font-weight: bold;
     color: white;
 }
 
@@ -269,6 +268,27 @@ p {
 .page-icon {
     background: url(./page-icon.svg) no-repeat center;
     background-size: contain;
-    height: 50vh;
+    height: 20vh;
     width: 50vw;
 }
+
+/* @media screen and (max-width: 900px) {
+    :root{
+        --container-width: 320px;
+    }
+    .email-container .field {
+        flex-direction: column;
+        width: 300px;
+    }
+} */
+
+@media screen and (max-width: 600px) {
+    :root {
+        --container-width: calc(100% - 40px);
+    }
+    .email-container .field {
+        flex-direction: column;
+        width: calc(100% - 40px);
+    }
+}
+

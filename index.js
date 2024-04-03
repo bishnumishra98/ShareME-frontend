@@ -10,6 +10,8 @@ const sharingContainer = document.querySelector(".sharing-container");
 const copyBtn = document.querySelector("#copyBtn");
 const emailForm = document.querySelector("#emailForm");
 const toast = document.querySelector(".toast");
+const pageIcon = document.querySelector(".page-icon");
+const AppLogo = document.querySelector(".logo"); 
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
@@ -74,6 +76,7 @@ browseBtn.addEventListener("click", () => {
 
 // uploadFile function prepares a file for upload, creates an XHR object, configures it for a POST request to the specified URL (uploadURL), and sends the file data
 const uploadFile = () => {
+    pageIcon.style.display = "none";
     progressContainer.style.display = "block";
     const file = fileInput.files[0];
     const formData = new FormData();   // A FormData object is created to prepare the data for sending via an HTTP request. It allows you to construct a set of key-value pairs representing form fields and their values.
@@ -109,6 +112,7 @@ const updateProgress = (e) => {
 
 // When file upload is successful
 const onUploadSuccess = ({ file: url }) => {
+    AppLogo.style.display = "none";
     console.log(url);
     fileInput.value = "";   // After successful upload, make the value of fileInput blank, so that we can upload new file later.
     emailForm[2].removeAttribute("disabled");   // remove the disabled attribute so that 'Send' button works
