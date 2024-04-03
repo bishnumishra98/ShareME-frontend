@@ -12,7 +12,7 @@ const emailForm = document.querySelector("#emailForm");
 const toast = document.querySelector(".toast");
 const pageIcon = document.querySelector(".page-icon");
 const appLogo = document.querySelector(".logo");
-const homePageURL = "http://127.0.0.1:5500";
+const homePageURL = "https://bishnumishra98.github.io/ShareME-frontend/";
 
 const host = "https://shareme-05c784a1a605.herokuapp.com/";
 const uploadURL = `${host}api/files`;
