@@ -55,7 +55,7 @@ body, .drop-zone, .upload-container {
 }
 
 .upload-container {
-    margin-top: 75px;
+    margin-top: 20px;
     margin-bottom: 30px;
     background: rgb(221, 228, 221);
     border-radius: 25px;
