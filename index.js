@@ -14,7 +14,7 @@ const pageIcon = document.querySelector(".page-icon");
 const appLogo = document.querySelector(".logo");
 const homePageURL = "https://bishnumishra98.github.io/ShareME-frontend/";
 
-const host = "https://shareme-backend-iyjn.onrender.com";
+const host = "https://shareme-backend-iyjn.onrender.com/";
 const uploadURL = `${host}api/files`;
 const emailURL = `${host}api/files/send`;
 
