@@ -12,6 +12,7 @@ const emailForm = document.querySelector("#emailForm");
 const toast = document.querySelector(".toast");
 const pageIcon = document.querySelector(".page-icon");
 const appLogo = document.querySelector(".logo");
+const notice = document.querySelector(".notice");
 const homePageURL = "https://bishnumishra98.github.io/ShareME-frontend/";
 
 const host = "https://shareme-backend-iyjn.onrender.com/";
@@ -126,6 +127,7 @@ const updateProgress = (e) => {
 const onUploadSuccess = ({ file: url }) => {
     pageIcon.style.display = "none";
     appLogo.style.display = "none";
+    notice.style.display = "none";
     console.log(url);
     fileInput.value = "";   // After successful upload, make the value of fileInput blank, so that we can upload new file later.
     emailForm[2].removeAttribute("disabled");   // remove the disabled attribute so that 'Send' button works
@@ -165,6 +167,7 @@ emailForm.addEventListener("submit", (e) => {
                 showToast("Email sent");
                 pageIcon.style.display = "block";
                 appLogo.style.display = "block";
+                notice.style.display = "block";
             }
     });
 });
