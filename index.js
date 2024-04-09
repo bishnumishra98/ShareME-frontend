@@ -19,7 +19,7 @@ const host = "https://shareme-backend-iyjn.onrender.com/";
 const uploadURL = `${host}api/files`;
 const emailURL = `${host}api/files/send`;
 
-const maxAllowedFileSize = 500 * 1024 * 1024;   // 500MB
+const maxAllowedFileSize = 1024 * 1024 * 1024;   // 1GB
 
 // Function to add the "dragged" class
 function addDraggedClass() {
@@ -88,7 +88,7 @@ const uploadFile = () => {
     const file = fileInput.files[0];
     if(file.size > maxAllowedFileSize) {
         fileInput.value = "";
-        showToast("Cannot upload file larger than 500MB");
+        showToast("Cannot upload file larger than 1GB");
         return;
     }
     progressContainer.style.display = "block";
